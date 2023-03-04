@@ -9,7 +9,8 @@ elements.forEach((el) => {
   if (
     el.textContent &&
     el.childNodes[0].nodeValue &&
-    el.childNodes[0].nodeValue.trim() !== ""
+    el.childNodes[0].nodeValue.trim() !== "" &&
+    !el.attributes.unselect
   ) {
     el.style.outline = "2px solid black";
     el.setAttribute("data-is-text", "true");
@@ -19,28 +20,53 @@ elements.forEach((el) => {
 // set the clicked element to selectedElement and display options to change text style to bold and italic
 body.addEventListener("click", (e) => {
   //check if the element has data-is-text as well as it does not have the unselect attribute given to option buttons
-  if (e.target.getAttribute("data-is-text") && !e.target.attributes.unselect) {
-    selectedElement = e.target;
+  if (e.target.getAttribute("data-is-text")) {
+    if (!e.target.attributes.unselect) {
+      selectedElement = e.target;
 
-    e.target.style.color = "red";
-    optionsDiv.style.top = `${e.clientY}px`;
-    optionsDiv.style.left = `${e.clientX}px`;
-    optionsDiv.style.display = "block";
+      e.target.style.color = "red";
+      optionsDiv.style.top = `${e.clientY}px`;
+      optionsDiv.style.left = `${e.clientX}px`;
+      optionsDiv.style.display = "inline-flex";
+    }
+  } else {
+    if(!e.target.attributes.unselect){
+        optionsDiv.style.display = 'none'
+    }
+    
   }
 });
 
 optionsDiv.children[0].addEventListener("click", () => {
-  if (selectedElement.style.fontWeight > 400) {
+  if (
+    selectedElement.style.fontWeight > 400 ||
+    selectedElement.style.fontWeight === "bold"
+  ) {
     selectedElement.style.fontWeight = 400;
+    optionsDiv.children[0].style.fontWeight = 400;
   } else {
     selectedElement.style.fontWeight = 700;
+    optionsDiv.children[0].style.fontWeight = 700;
   }
 });
 
 optionsDiv.children[1].addEventListener("click", () => {
-  if (selectedElement.style.fontStyle === "normal") {
-    selectedElement.style.fontStyle = "italic";
-  } else {
+  if (selectedElement.style.fontStyle === "italic") {
     selectedElement.style.fontStyle = "normal";
+    optionsDiv.children[1].style.fontStyle = "italic";
+    optionsDiv.children[1].style.fontWeight = "400";
+  } else {
+    selectedElement.style.fontStyle = "italic";
+    optionsDiv.children[1].style.fontWeight = "bold";
   }
 });
+
+optionsDiv.children[2].addEventListener('blur' , () => {
+    console.log(optionsDiv.children[2].value)
+    selectedElement.style.fontSize = `${(optionsDiv.children[2].value)}px`
+})
+
+optionsDiv.children[3].addEventListener('input' , () => {
+    console.log(optionsDiv.children[3].value)
+    selectedElement.style.color = optionsDiv.children[3].value
+})
