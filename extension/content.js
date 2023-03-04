@@ -26,7 +26,7 @@ editTypography = () => {
         optionsDiv.style.left = `${e.clientX + window.scrollX}px`;
         optionsDiv.style.display = "inline-flex";
       }
-    } 
+    }
     // else {
     //   if (!e.target.attributes.unselect && !e.target.getAttribute("data-options")) {
     //     optionsDiv.style.display = "none";
@@ -51,7 +51,7 @@ editTypography = () => {
       optionsDiv.children[0].style.fontWeight = 700;
     }
   });
-  
+
   optionsDiv.children[1].addEventListener("click", () => {
     if (selectedElement.style.fontStyle === "italic") {
       selectedElement.style.fontStyle = "normal";
@@ -62,80 +62,79 @@ editTypography = () => {
       optionsDiv.children[1].style.fontWeight = "bold";
     }
   });
-  
+
   optionsDiv.children[2].addEventListener("blur", (e) => {
     selectedElement.style.fontSize = `${e.target.value}px`;
   });
-  
+
   optionsDiv.children[3].addEventListener("input", (e) => {
     selectedElement.style.color = e.target.value;
   });
 
   document.querySelector(".style-close-btn").addEventListener("click", () => {
     optionsDiv.style.display = "none";
-  })
+  });
 
   // Google fonts
 
-const API_KEY = "AIzaSyDkxf_L1L2bOOVmztw_NcfY6eLmXNiZqAk";
-const apiUrl = `https://www.googleapis.com/webfonts/v1/webfonts?key=${API_KEY}&sort=popularity`;
+  const API_KEY = "AIzaSyDkxf_L1L2bOOVmztw_NcfY6eLmXNiZqAk";
+  const apiUrl = `https://www.googleapis.com/webfonts/v1/webfonts?key=${API_KEY}&sort=popularity`;
 
-let allFonts = [];
+  let allFonts = [];
 
-async function getGoogleFonts() {
-  const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.items;
-}
-
-function applyFont(fontName, element) {
-  element.style.fontFamily = fontName;
-}
-
-getGoogleFonts().then(async (fonts) => {
-  allFonts = fonts;
-  setFontOptions(fonts);
-});
-
-async function setFont(fontName) {
-  const selectedFont = allFonts.filter((font) => font?.family === fontName)[0];
-
-  if (selectedFont && selectedFont.files && selectedFont.files.regular) {
-    const fontContent = await fetch(selectedFont?.files.regular).then((r) =>
-      r.arrayBuffer()
-    );
-
-    const font = new FontFace(selectedFont.family, fontContent);
-    await font.load();
-    document.fonts.add(font);
+  async function getGoogleFonts() {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data.items;
   }
-}
 
-const selectEl = document.querySelector(".stylo-select");
+  function applyFont(fontName, element) {
+    element.style.fontFamily = fontName;
+  }
 
-function setFontOptions(fonts) {
-  fonts.forEach(async (font, index) => {
-    if (index > 200) {
-      return;
-    }
-
-    if (font.family && font.files && font.files.regular) {
-      const optionEl = document.createElement("option");
-      optionEl.setAttribute("value", font.family);
-      optionEl.textContent = font.family;
-      optionEl.style.fontFamily = font.family;
-      selectEl.append(optionEl);
-    }
+  getGoogleFonts().then(async (fonts) => {
+    allFonts = fonts;
+    setFontOptions(fonts);
   });
-}
 
-selectEl.addEventListener("change", (e) => {
+  async function setFont(fontName) {
+    const selectedFont = allFonts.filter(
+      (font) => font?.family === fontName
+    )[0];
+
+    if (selectedFont && selectedFont.files && selectedFont.files.regular) {
+      const fontContent = await fetch(selectedFont?.files.regular).then((r) =>
+        r.arrayBuffer()
+      );
+
+      const font = new FontFace(selectedFont.family, fontContent);
+      await font.load();
+      document.fonts.add(font);
+    }
+  }
+
+  const selectEl = document.querySelector(".stylo-select");
+
+  function setFontOptions(fonts) {
+    fonts.forEach(async (font, index) => {
+      if (index > 200) {
+        return;
+      }
+
+      if (font.family && font.files && font.files.regular) {
+        const optionEl = document.createElement("option");
+        optionEl.setAttribute("value", font.family);
+        optionEl.textContent = font.family;
+        optionEl.style.fontFamily = font.family;
+        selectEl.append(optionEl);
+      }
+    });
+  }
+
+  selectEl.addEventListener("change", (e) => {
     setFont(e.target.value);
-    applyFont(e.target.value, selectedElement)
-});
-
-  
-  
+    applyFont(e.target.value, selectedElement);
+  });
 };
 
 function generateOptionsContainer() {
@@ -159,19 +158,19 @@ function generateOptionsContainer() {
   fontSizeInput.setAttribute("placeholder", 16);
   fontSizeInput.setAttribute("type", "number");
   setOptionsFontSizeStyle(fontSizeInput);
-  
+
   const colorInput = document.createElement("input");
   colorInput.setAttribute("unselect", true);
   colorInput.setAttribute("type", "color");
   setOptionColorInptStyle(colorInput);
-  
+
   const select = document.createElement("select");
   select.setAttribute("data-options", true);
   select.classList.add("stylo-select");
 
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "x";
-  closeBtn.classList.add("style-close-btn")
+  closeBtn.classList.add("style-close-btn");
   setOptionButtonStyle(closeBtn);
   closeBtn.style.color = "red";
 
