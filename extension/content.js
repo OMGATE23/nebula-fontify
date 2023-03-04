@@ -1,5 +1,6 @@
 editTypography = () => {
   const elements = document.body.querySelectorAll("*");
+  let selectedEl;
 
   elements.forEach((el) => {
     if (
@@ -14,10 +15,68 @@ editTypography = () => {
   });
 
   generateOptionsContainer();
+
+  document.querySelector("body").addEventListener("click", (e) => {
+    const optionsDiv = document.querySelector(".stylo-options");
+    //check if the element has data-is-text as well as it does not have the unselect attribute given to option buttons
+    if (e.target.getAttribute("data-is-text")) {
+      if (!e.target.attributes.unselect) {
+        selectedElement = e.target;
+        optionsDiv.style.top = `${e.clientY + window.scrollY}px`;
+        optionsDiv.style.left = `${e.clientX + window.scrollX}px`;
+        optionsDiv.style.display = "inline-flex";
+      }
+    } 
+    // else {
+    //   if (!e.target.attributes.unselect && !e.target.getAttribute("data-options")) {
+    //     optionsDiv.style.display = "none";
+    //   }
+    // }
+    // if(!e.target.getAttribute("data-options") && !e.target.getAttribute("data-is-text")) {
+    //   optionsDiv.style.display = "none";
+    // }
+  });
+
+  const optionsDiv = document.querySelector(".stylo-options");
+
+  optionsDiv.children[0].addEventListener("click", () => {
+    if (
+      selectedElement.style.fontWeight > 400 ||
+      selectedElement.style.fontWeight === "bold"
+    ) {
+      selectedElement.style.fontWeight = 400;
+      optionsDiv.children[0].style.fontWeight = 400;
+    } else {
+      selectedElement.style.fontWeight = 700;
+      optionsDiv.children[0].style.fontWeight = 700;
+    }
+  });
+  
+  optionsDiv.children[1].addEventListener("click", () => {
+    if (selectedElement.style.fontStyle === "italic") {
+      selectedElement.style.fontStyle = "normal";
+      optionsDiv.children[1].style.fontStyle = "italic";
+      optionsDiv.children[1].style.fontWeight = "400";
+    } else {
+      selectedElement.style.fontStyle = "italic";
+      optionsDiv.children[1].style.fontWeight = "bold";
+    }
+  });
+  
+  optionsDiv.children[2].addEventListener("blur", (e) => {
+    selectedElement.style.fontSize = `${e.target.value}px`;
+  });
+  
+  optionsDiv.children[3].addEventListener("input", (e) => {
+    selectedElement.style.color = e.target.value;
+  });
+  
+  
 };
 
 function generateOptionsContainer() {
   const optionsDiv = document.createElement("div");
+  optionsDiv.classList.add("stylo-options");
   setOptionsStyle(optionsDiv);
 
   const boldBtn = document.createElement("button");
