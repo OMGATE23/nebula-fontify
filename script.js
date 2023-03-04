@@ -9,7 +9,8 @@ elements.forEach((el) => {
   if (
     el.textContent &&
     el.childNodes[0].nodeValue &&
-    el.childNodes[0].nodeValue.trim() !== ""
+    el.childNodes[0].nodeValue.trim() !== "" &&
+    !el.attributes.unselect
   ) {
     el.style.outline = "2px solid black";
     el.setAttribute("data-is-text", "true");
@@ -59,7 +60,7 @@ optionsDiv.children[1].addEventListener("click", () => {
   }
 });
 
-optionsDiv.children[3].addEventListener('click' , () => {
+optionsDiv.children[2].addEventListener('blur' , () => {
     console.log(optionsDiv.children[2].value)
     selectedElement.style.fontSize = `${(optionsDiv.children[2].value)}px`
 })
