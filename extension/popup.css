@@ -1,0 +1,11 @@
+.popup {
+    padding: 10px;
+    margin: auto;
+    width: 300px;
+}
+
+p {
+    margin: 1rem 0.25rem;
+    font-size: 1rem;
+    text-align: center;
+}
