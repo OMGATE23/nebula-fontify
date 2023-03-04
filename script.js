@@ -27,7 +27,7 @@ body.addEventListener("click", (e) => {
       e.target.style.color = "red";
       optionsDiv.style.top = `${e.clientY}px`;
       optionsDiv.style.left = `${e.clientX}px`;
-      optionsDiv.style.display = "block";
+      optionsDiv.style.display = "inline-flex";
     }
   } else {
     if(!e.target.attributes.unselect){
@@ -43,10 +43,10 @@ optionsDiv.children[0].addEventListener("click", () => {
     selectedElement.style.fontWeight === "bold"
   ) {
     selectedElement.style.fontWeight = 400;
-    optionsDiv.children[0].style.fontWeight = 700;
+    optionsDiv.children[0].style.fontWeight = 400;
   } else {
     selectedElement.style.fontWeight = 700;
-    optionsDiv.children[0].style.fontWeight = 400;
+    optionsDiv.children[0].style.fontWeight = 700;
   }
 });
 
@@ -54,13 +54,19 @@ optionsDiv.children[1].addEventListener("click", () => {
   if (selectedElement.style.fontStyle === "italic") {
     selectedElement.style.fontStyle = "normal";
     optionsDiv.children[1].style.fontStyle = "italic";
+    optionsDiv.children[1].style.fontWeight = "400";
   } else {
     selectedElement.style.fontStyle = "italic";
-    optionsDiv.children[1].style.fontStyle = "normal";
+    optionsDiv.children[1].style.fontWeight = "bold";
   }
 });
 
 optionsDiv.children[2].addEventListener('blur' , () => {
     console.log(optionsDiv.children[2].value)
     selectedElement.style.fontSize = `${(optionsDiv.children[2].value)}px`
+})
+
+optionsDiv.children[3].addEventListener('input' , () => {
+    console.log(optionsDiv.children[3].value)
+    selectedElement.style.color = optionsDiv.children[3].value
 })
