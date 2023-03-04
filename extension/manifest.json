@@ -1,0 +1,21 @@
+{
+    "name": "Typography",
+    "description": "Try out different typography styles!",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "permissions": [
+        "webRequest",
+        "scripting",
+        "activeTab",
+        "clipboardRead",
+        "clipboardWrite",
+        "tabs"
+    ],
+    "host_permissions": [
+        "*://*/*" 
+    ],
+    "action":{
+        "default_title": "Typography",
+        "default_popup": "popup.html"
+    }
+}
