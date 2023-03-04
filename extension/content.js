@@ -71,6 +71,10 @@ editTypography = () => {
     selectedElement.style.color = e.target.value;
   });
 
+  document.querySelector(".style-close-btn").addEventListener("click", () => {
+    optionsDiv.style.display = "none";
+  })
+
   // Google fonts
 
 const API_KEY = "AIzaSyDkxf_L1L2bOOVmztw_NcfY6eLmXNiZqAk";
@@ -165,13 +169,18 @@ function generateOptionsContainer() {
   select.setAttribute("data-options", true);
   select.classList.add("stylo-select");
 
-  const style = document.createElement("style");
+  const closeBtn = document.createElement("button");
+  closeBtn.textContent = "x";
+  closeBtn.classList.add("style-close-btn")
+  setOptionButtonStyle(closeBtn);
+  closeBtn.style.color = "red";
 
   optionsDiv.appendChild(boldBtn);
   optionsDiv.appendChild(italicBtn);
   optionsDiv.appendChild(fontSizeInput);
   optionsDiv.appendChild(colorInput);
   optionsDiv.appendChild(select);
+  optionsDiv.appendChild(closeBtn);
   document.querySelector("body").append(optionsDiv);
 }
 
