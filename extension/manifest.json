@@ -1,6 +1,6 @@
 {
-    "name": "Typography",
-    "description": "Try out different typography styles!",
+    "name": "Nebula Fontify",
+    "description": "Create stunning typographic designs for any website",
     "version": "1.0.0",
     "manifest_version": 3,
     "permissions": [
@@ -17,5 +17,11 @@
     "action":{
         "default_title": "Typography",
         "default_popup": "popup.html"
+    },
+    "icons": { 
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "192": "icon192.png",
+        "512": "icon512.png" 
     }
 }
