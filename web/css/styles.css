@@ -44,6 +44,11 @@ html {
 body, p {
 	color: #5d636b; 
 	font: 400 1rem/1.625rem "Open Sans", sans-serif;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
+}
+
+a {
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
 }
 
 h1 {
@@ -313,7 +318,7 @@ hr.hr-heading {
 	font-weight: 600;
 	font-size: 0.875rem;
 	line-height: 0;
-	cursor: pointer;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
 	transition: all 0.2s;
 }
 
@@ -641,7 +646,7 @@ hr.hr-heading {
 	font-size: 1.25rem;
 	line-height: 1.625rem;
 	text-decoration: none;
-	cursor: pointer;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
 	transition: all 0.2s ease;
 }
 
@@ -829,7 +834,8 @@ hr.hr-heading {
 }
 
 .basic-1 .btn-solid-reg {
-	cursor: pointer;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
+
 }
 
 
@@ -892,7 +898,8 @@ hr.hr-heading {
 }
 
 .details-modal .btn-outline-reg {
-	cursor: pointer;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
+
 }
 
 
@@ -928,7 +935,7 @@ hr.hr-heading {
 	height: 2.75rem;
 	padding: 1.125rem 1.25rem 1.125rem 1.75rem;
 	border-radius: 50%;
-	cursor: pointer;
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
@@ -1216,7 +1223,7 @@ hr.hr-heading {
 	border-radius: 50%; 
 	outline: none; 
 	background-color: #3b384b; 
-	cursor: pointer; 
+	cursor: url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto;
 }
 
 #myBtn:hover {
