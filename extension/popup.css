@@ -1,11 +1,22 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: url('https://res.cloudinary.com/dqkl3iifo/image/upload/v1677994377/logos/spacebg_fgoghi.jpg');
+    width: fit-content;
+}
+
 .popup {
     margin: auto;
     width: 300px;
-    background: url('https://res.cloudinary.com/dqkl3iifo/image/upload/v1677994377/logos/spacebg_fgoghi.jpg');
+    
+}
+
+.popup .wrapper {
+    margin: 3rem 1rem;
 }
 
 p {
-    margin: 1rem 0.25rem;
+    margin: 1rem;
     font-size: 1rem;
     text-align: center;
     color: white;
