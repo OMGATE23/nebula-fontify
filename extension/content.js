@@ -1,7 +1,8 @@
 editTypography = () => {
   const elements = document.body.querySelectorAll("*");
   let selectedElement;
-  document.querySelector("body").style.cursor = 'url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto'
+  document.querySelector("body").style.cursor =
+    "url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto";
   elements.forEach((el) => {
     if (
       el.textContent &&
@@ -25,6 +26,7 @@ editTypography = () => {
         optionsDiv.style.top = `${e.clientY + window.scrollY}px`;
         optionsDiv.style.left = `${e.clientX + window.scrollX}px`;
         optionsDiv.style.display = "inline-flex";
+        
       }
     }
     // else {
@@ -32,9 +34,9 @@ editTypography = () => {
     //     optionsDiv.style.display = "none";
     //   }
     // }
-    // if(!e.target.getAttribute("data-options") && !e.target.getAttribute("data-is-text")) {
-    //   optionsDiv.style.display = "none";
-    // }
+    else if (!e.target.getAttribute("data-options")) {
+      optionsDiv.style.display = "none";
+    }
   });
 
   const optionsDiv = document.querySelector(".stylo-options");
@@ -127,6 +129,8 @@ editTypography = () => {
         optionEl.setAttribute("value", font.family);
         optionEl.textContent = font.family;
         optionEl.style.fontFamily = font.family;
+        optionEl.style.color = "white"
+        optionEl.setAttribute("data-options", true);
         selectEl.append(optionEl);
       }
     });
@@ -142,32 +146,41 @@ function generateOptionsContainer() {
   const optionsDiv = document.createElement("div");
   optionsDiv.classList.add("stylo-options");
   setOptionsStyle(optionsDiv);
+  optionsDiv.setAttribute("data-options", true);
 
   const boldBtn = document.createElement("button");
   boldBtn.setAttribute("unselect", true);
   boldBtn.textContent = "B";
   setOptionButtonStyle(boldBtn);
+  boldBtn.setAttribute("data-options", true);
 
   const italicBtn = document.createElement("button");
   italicBtn.setAttribute("unselect", true);
   italicBtn.textContent = "I";
   italicBtn.style.fontStyle = "italic";
   setOptionButtonStyle(italicBtn);
+  italicBtn.setAttribute("data-options", true);
 
   const fontSizeInput = document.createElement("input");
   fontSizeInput.setAttribute("unselect", true);
   fontSizeInput.setAttribute("placeholder", 16);
   fontSizeInput.setAttribute("type", "number");
+  fontSizeInput.defaultValue = "16";
   setOptionsFontSizeStyle(fontSizeInput);
+  fontSizeInput.setAttribute("data-options", true);
 
   const colorInput = document.createElement("input");
   colorInput.setAttribute("unselect", true);
   colorInput.setAttribute("type", "color");
   setOptionColorInptStyle(colorInput);
+  colorInput.setAttribute("data-options", true);
 
   const select = document.createElement("select");
   select.setAttribute("data-options", true);
   select.classList.add("stylo-select");
+  select.style.backgroundColor = "#111827";
+  select.style.color = "white";
+  select.setAttribute("data-options", true);
 
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "x";
@@ -175,6 +188,7 @@ function generateOptionsContainer() {
   setOptionButtonStyle(closeBtn);
   closeBtn.style.color = "red";
   closeBtn.setAttribute("unselect", true);
+  closeBtn.setAttribute("data-options", true);
 
   optionsDiv.appendChild(boldBtn);
   optionsDiv.appendChild(italicBtn);
@@ -192,7 +206,9 @@ function setOptionsStyle(optionsDiv) {
   optionsDiv.style.left = 0;
   optionsDiv.style.padding = "0.5rem";
   optionsDiv.style.alignItems = "stretch";
-  optionsDiv.style.background = "white";
+  optionsDiv.style.background =
+    "url('https://res.cloudinary.com/dqkl3iifo/image/upload/v1677994377/logos/spacebg_fgoghi.jpg')";
+  optionsDiv.style.color = "white";
   optionsDiv.style.overflow = "hidden";
   optionsDiv.style.lineHeight = "1.2";
   optionsDiv.style.borderRadius = "5px";
@@ -208,6 +224,8 @@ function setOptionButtonStyle(buttonEl) {
   buttonEl.style.background = "white";
   buttonEl.style.marginRight = "0.5rem";
   buttonEl.style.cursor = "pointer";
+  buttonEl.style.background = "none";
+  buttonEl.style.color = "white";
 }
 
 function setOptionsFontSizeStyle(inputEl) {
@@ -217,6 +235,8 @@ function setOptionsFontSizeStyle(inputEl) {
   inputEl.style.border = "none";
   inputEl.style.paddingLeft = "0.5rem";
   inputEl.style.borderLeft = "2px solid rgba(0,0,0,0.1)";
+  inputEl.style.background = "none";
+  inputEl.style.color = "white";
 }
 
 function setOptionColorInptStyle(inputEl) {
@@ -227,6 +247,8 @@ function setOptionColorInptStyle(inputEl) {
   inputEl.style.marginTop = "0.25rem";
   inputEl.style.borderRadius = "50%";
   inputEl.style.cursor = "pointer";
+  inputEl.style.background = "none";
+  inputEl.style.color = "white";
 }
 
 editTypography();
