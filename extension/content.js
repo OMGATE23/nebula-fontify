@@ -71,7 +71,8 @@ editTypography = () => {
     selectedElement.style.color = e.target.value;
   });
 
-  document.querySelector(".style-close-btn").addEventListener("click", () => {
+  document.querySelector(".style-close-btn").addEventListener("click", (e) => {
+    e.stopPropagation();
     optionsDiv.style.display = "none";
   });
 
@@ -173,6 +174,7 @@ function generateOptionsContainer() {
   closeBtn.classList.add("style-close-btn");
   setOptionButtonStyle(closeBtn);
   closeBtn.style.color = "red";
+  closeBtn.setAttribute("unselect", true);
 
   optionsDiv.appendChild(boldBtn);
   optionsDiv.appendChild(italicBtn);
