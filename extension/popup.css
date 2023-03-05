@@ -1,5 +1,4 @@
 .popup {
-    padding: 10px;
     margin: auto;
     width: 300px;
     background: url('https://res.cloudinary.com/dqkl3iifo/image/upload/v1677994377/logos/spacebg_fgoghi.jpg');
@@ -9,4 +8,5 @@ p {
     margin: 1rem 0.25rem;
     font-size: 1rem;
     text-align: center;
+    color: white;
 }
