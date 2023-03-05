@@ -1,7 +1,7 @@
 editTypography = () => {
   const elements = document.body.querySelectorAll("*");
-  let selectedEl;
-
+  let selectedElement;
+  document.querySelector("body").style.cursor = 'url(https://res.cloudinary.com/dqkl3iifo/image/upload/v1677993621/logos/ufo_j1dnoz.png) , auto'
   elements.forEach((el) => {
     if (
       el.textContent &&
@@ -9,7 +9,7 @@ editTypography = () => {
       el.childNodes[0].nodeValue.trim() !== "" &&
       !el.attributes.unselect
     ) {
-      el.style.outline = "2px solid green";
+      el.style.outline = "2px solid limegreen";
       el.setAttribute("data-is-text", "true");
     }
   });
